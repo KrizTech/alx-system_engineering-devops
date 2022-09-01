@@ -1,0 +1,3 @@
+#!/bin/bash
+su betty /tmp/0-iam_betty
+
