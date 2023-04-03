@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Installs and setup HAproxy
+# Install and setup HAproxy
 
 apt-get install -y software-properties-common
 add-apt-repository -y ppa:vbernat/HAproxy-1.8
