@@ -1,21 +1,15 @@
 #!/usr/bin/env bash
-# configures a new HAproxy as a load balancer
+# Install and configure HAproxy on your lb-01 server.
+apt-get -y update;
+apt-get -y install haproxy;
+echo "
+frontend www
+	bind *:80
+	default_backend web-backend
 
-# Install HAproxy on a server
-apt-get -y update
-apt-get -y install HAproxy=1.6.\*
-
-# Configure HAproxy configuration file to distribute requests using a roundrobin algorithm
-echo '
-frontend thekriz.tech
-        bind 0:80
-        default_backend web_servers
-
-backend web_servers
-        balance roundrobin
-        server 119412-web-01 54.146.93.232:80
-        server 119412-web-02 100.26.17.110:80
-' >> /etc/HAproxy/HAproxy.cfg
-
-# Restart HAproxy service
+backend web-backend
+	balance roundrobin
+	server web1 54.146.93.232:80 check
+	server web2 100.26.17.110:80 check
+" >> /etc/haproxy/haproxy.cfg
 service haproxy restart
