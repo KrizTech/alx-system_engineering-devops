@@ -7,18 +7,18 @@ global
         user haproxy
         group haproxy
         daemon
+        maxconn 2048
+        tune.ssl.default-dh-param 2048
 
         # Default SSL material locations
         ca-base /etc/ssl/certs
         crt-base /etc/ssl/private
 
-	tune.ssl.default-dh-param 2048	
-
         # Default ciphers to use on SSL-enabled listening sockets.
         # For more information, see ciphers(1SSL). This list is from:
         #  https://hynek.me/articles/hardening-your-web-servers-ssl-ciphers/
         ssl-default-bind-ciphers ECDH+AESGCM:DH+AESGCM:ECDH+AES256:DH+AES256:ECDH+AES128:DH+AES:ECDH+3DES:DH+3DES:RSA+AESGCM:RSA+AES:RSA+3DES:!aNULL:!MD5:!DSS
-        ssl-default-bind-options no-sslv3
+        ssl-default-bind-options no-sslv3#!/usr/bin/env bash
 
 defaults
         log     global
@@ -35,17 +35,26 @@ defaults
         errorfile 502 /etc/haproxy/errors/502.http
         errorfile 503 /etc/haproxy/errors/503.http
         errorfile 504 /etc/haproxy/errors/504.http
-
-
-frontend thekriz.tech
-        bind 0:80
-        bind 0:443 ssl crt /etc/ssl/private/thekriz.tech.pem
-        http-request redirect scheme https code 301 unless { ssl_fc }
         option forwardfor
-        default_backend thekriz.tech_backend
+        option http-server-close
 
-backend thekriz.tech_backend
-        balance roundrobin
+frontend www-http
+        bind *:80
+        reqadd X-Forwarded-Proto:\ http
+	redirect scheme https 301 if !{ ssl_fc }
+        default_backend www-backend
+
+frontend www-https
+        bind *:443 ssl crt /etc/haproxy/certs/
+        reqadd X-Forwarded-Proto:\ https
+        acl letsencrypt-acl path_beg /.well-known/acme-challenge/
+        use_backend letsencrypt-backend if letsencrypt-acl
+        default_backend www-backend
+
+backend www-backend
+        redirect scheme https if !{ ssl_fc }
         server 119412-web-01 54.146.93.232:80 check
-        server 110412-web-02 100.26.17.110:80 check
+        server 119412-web-02 100.26.17.110:80 check
 
+backend letsencrypt-backend
+        server letsencrypt 127.0.0.1:54321
