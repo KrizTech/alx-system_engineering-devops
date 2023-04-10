@@ -33,11 +33,15 @@ defaults
         errorfile 503 /etc/haproxy/errors/503.http
         errorfile 504 /etc/haproxy/errors/504.http
 
-frontend www
+frontend www.thekriz.tech
         bind *:80
-        default_backend web-backend
+	bind 0:443 ssl crt /etc/ssl/private/www.thekriz.tech.pem
+	http-request redirect scheme https code 301 unless { ssl_fc }
+	option forwardfor
+        default_backend thekriz.tech_backend
 
-backend web-backend
+backend thekriz.tech_backend
         balance roundrobin
         server web1 54.146.93.232:80 check
         server web2 100.26.17.110:80 check
+
