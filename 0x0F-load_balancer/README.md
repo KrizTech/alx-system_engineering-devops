@@ -30,29 +30,29 @@ $ sudo apt-get install -y haproxy=1.6.\*
 
 $ sudo vi /etc/haproxy/haproxy.cfg
 # Add the below code to the file opened using vi editor
-frontend sammykingx.tech
+frontend thekriz.tech
         bind 0:80
 	mode http
         default_backend web_servers
 
 backend web_servers
         balance roundrobin
-        server 64820-web-01 100.26.152.157:80
-        server 64820-web-02 52.86.102.6:80
+        server 64820-web-01 54.237.15.202:80
+        server 64820-web-02 54.237.89.225:80
 ~
 ~
 :wq(to save and exit)
 --------------- or ----------------------- 
 $ echo '
-frontend sammykingx.tech
+frontend thekriz.tech
         bind 0:80
 	mode http
         default_backend web_servers
 
 backend web_servers
         balance roundrobin
-        server 64820-web-01 100.26.152.157:80
-        server 64820-web-02 52.86.102.6:80
+        server 64820-web-01 54.237.15.202:80
+        server 64820-web-02 54.237.89.225:80
 ' >> /etc/haproxy/haproxy.cfg
 
 $ service haproxy restart
