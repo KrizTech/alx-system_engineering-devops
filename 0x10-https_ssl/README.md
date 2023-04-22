@@ -64,6 +64,6 @@ $ sudo service haproxy reload
 _If you don't have HAProxy installed just copy and run this on your terminal and save yourself the hassle_
 
 ```
-$ wget -O haproxy https://github.com/sammykingx/alx-system_engineering-devops/raw/master/0x0F-load_balancer/install_haproxy_safely && bash haproxy
+$ wget -O haproxy https://github.com/KrizTech/alx-system_engineering-devops/raw/master/0x0F-load_balancer/install_haproxy_safely && bash haproxy
 
 ```
