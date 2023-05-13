@@ -1,6 +1,6 @@
 # POSTMORTEM
 
-# Server Outage Incident report
+# Incident Report
 > By Christian Donatus Mba (KrizTech)
 
 ![](https://storage.googleapis.com/xmcom-wp-content-uploads/1/2021/05/2357ea33-how-to-choose-im-tool-v2-02-1024x438.png)
