@@ -1,11 +1,10 @@
 # POSTMORTEM
 
 # Server Outage Incident report
-> By Christian Dnnatus Mba (KrizTech)
+> By Christian Donatus Mba (KrizTech)
 
-![](https://constanttech.com/wp-content/uploads/2020/10/incident-management.jpg)
-
-Upon the release of ALX's System Engineering & DevOps project 0x19, approximately 06:00 West African Time (WAT) here in Nigeria, an outage occurred on an isolated Ubuntu 14.04 container running an Apache web server. GET requests on the server led to 500 Internal Server Error's, when the expected response was an HTML file defining a simple Holberton WordPress site.
+![](https://www.servicenow.com/content/dam/servicenow-assets/public/en-us/images/company-library/what-is-pages/what-is-incident-management.jpg)
+The release of ALX's System Engineering & DevOps project 0x19, approximately 06:00 West African Time (WAT) here in Nigeria, an outage occurred on an isolated Ubuntu 14.04 container running an Apache web server. GET requests on the server led to 500 Internal Server Error's, when the expected response was an HTML file defining a simple Holberton WordPress site.
 
 ## Debugging Process
 
