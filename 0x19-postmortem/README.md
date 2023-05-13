@@ -3,7 +3,7 @@
 # Server Outage Incident report
 > By Christian Donatus Mba (KrizTech)
 
-![](https://www.servicenow.com/content/dam/servicenow-assets/public/en-us/images/company-library/what-is-pages/what-is-incident-management.jpg)
+![](https://storage.googleapis.com/xmcom-wp-content-uploads/1/2021/05/2357ea33-how-to-choose-im-tool-v2-02-1024x438.png)
 
 The release of ALX's System Engineering & DevOps project 0x19, approximately 06:00 West African Time (WAT) here in Nigeria, an outage occurred on an isolated Ubuntu 14.04 container running an Apache web server. GET requests on the server led to 500 Internal Server Error's, when the expected response was an HTML file defining a simple Holberton WordPress site.
 
