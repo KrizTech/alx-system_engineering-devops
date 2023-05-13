@@ -11,9 +11,8 @@ The release of ALX's System Engineering & DevOps project 0x19, approximately 06:
 
 ![](https://www.collidu.com/media/catalog/product/img/e/b/ebe55f5868a1bcf508c9cf7ec236c4e5398072c5968e5564957508c545ebb5de/debugging-process-slide1.png)
 
-Bug debugger Bamidele (Lexxyla... as in my actual initials... made that up on the spot, pretty
-good, huh?) encountered the issue upon opening the project and being, well, instructed to
-address it, roughly 19:20 PST. He promptly proceeded to undergo solving the problem.
+My Bug debugger encountered the issue upon opening the project and being, well, instructed to
+address it, roughly 19:20 PST... promptly proceeded to undergo solving the problem.
 
 1. Checked running processes using `ps aux`. Two `apache2` processes - `root` and `www-data` -
 were properly running.
