@@ -1,6 +1,6 @@
 # Application_server
 
-![](https://www.researchgate.net/publication/221511687/figure/fig1/AS:669988532805646@1536749122567/the-3-Tier-application-server-model.png)
+![](https://cdn.educba.com/academy/wp-content/uploads/2019/04/What-is-Application-Server-1.1.png)
 
 Your web infrastructure is already serving web pages via Nginx that you installed in [your first web stack project](https://github.com/sammykingx/alx-system_engineering-devops/tree/master/0x0C-web_server). While a web server can also serve dynamic content, this task is usually given to an application server. In this project you will add this piece to your infrastructure, plug it to your __Nginx__ and make is serve your __Airbnb clone project.__
 
