@@ -1,3 +1,25 @@
 #!/usr/bin/env bash
 # Gracefully reloads Gunicorn.
-pgrep gunicorn | xargs | cut -d ' ' -f 1 | xargs kill -HUP
+# Define the Gunicorn process name
+GUNICORN_PROCESS_NAME="gunicorn"
+
+# Find the process ID (PID) of the Gunicorn process
+GUNICORN_PID=$(pgrep -f $GUNICORN_PROCESS_NAME)
+
+# Check if Gunicorn is running
+if [ -z "$GUNICORN_PID" ]; then
+    echo "Gunicorn is not running."
+    exit 1
+fi
+
+# Send the HUP signal to the Gunicorn process to reload gracefully
+kill -HUP $GUNICORN_PID
+
+# Check the exit status of the kill command
+if [ $? -eq 0 ]; then
+    echo "Gunicorn reloaded gracefully."
+else
+    echo "Failed to reload Gunicorn."
+    exit 1
+fi
+
